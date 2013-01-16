@@ -20,7 +20,7 @@
 build/*
 
 # Netbeans
-nbproject/*
+nbproject/private/*
 dist/*
 
 .dep.inc
