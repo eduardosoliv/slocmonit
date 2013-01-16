@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 // Prototypes
+void hsignalInstall(void);
 void hsignalHandler(int sig);
 
 #ifdef	__cplusplus

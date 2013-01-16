@@ -13,7 +13,28 @@
 
 extern FILE *fpl, *fple;
 
-void hsignalHandler(int sig) {
+/**
+ * Install signal handlers
+ */
+void hsignalInstall(void)
+{
+    signal(SIGHUP, hsignalHandler);
+    signal(SIGINT, hsignalHandler);
+    signal(SIGQUIT, hsignalHandler);
+    signal(SIGILL, hsignalHandler);
+    signal(SIGABRT, hsignalHandler);
+    signal(SIGFPE, hsignalHandler);
+    signal(SIGSEGV, hsignalHandler);
+    signal(SIGPIPE, hsignalHandler);
+    signal(SIGALRM, hsignalHandler);
+    signal(SIGTERM, hsignalHandler);
+}
+
+/**
+ * Function that handle signals
+ */
+void hsignalHandler(int sig)
+{
 	char ddate[64];
 	utilGetDate(ddate);
 	switch(sig) {

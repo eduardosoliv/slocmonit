@@ -11,7 +11,8 @@
  * Store date and time in argument passed
  * @param ddate
  */
-void utilGetDate(char *ddate) {
+void utilGetDate(char *ddate)
+{
         time_t rawtime;
         struct tm * timeinfo;
 
