@@ -24,3 +24,5 @@ nbproject/private/*
 dist/*
 
 .dep.inc
+
+log/*

@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/hsignal.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/config.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/hexit.o
 
 
 # C Compiler Flags
@@ -74,10 +76,20 @@ ${OBJECTDIR}/hsignal.o: hsignal.c
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/hsignal.o hsignal.c
 
+${OBJECTDIR}/config.o: config.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/config.o config.c
+
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/hexit.o: hexit.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/hexit.o hexit.c
 
 # Subprojects
 .build-subprojects:

@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/hsignal.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/config.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/hexit.o
 
 
 # C Compiler Flags
@@ -67,17 +69,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/slocmonit: ${OBJECTFILES}
 ${OBJECTDIR}/util.o: util.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/util.o util.c
+	$(COMPILE.c) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/util.o util.c
 
 ${OBJECTDIR}/hsignal.o: hsignal.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/hsignal.o hsignal.c
+	$(COMPILE.c) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/hsignal.o hsignal.c
+
+${OBJECTDIR}/config.o: config.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/config.o config.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/hexit.o: hexit.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/hexit.o hexit.c
 
 # Subprojects
 .build-subprojects:

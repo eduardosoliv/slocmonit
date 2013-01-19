@@ -5,7 +5,7 @@
  * Created on January 16, 2013, 1:11 AM
  */
 
-#include <time.h>
+#include "main.h"
 
 /**
  * Store date and time in argument passed
