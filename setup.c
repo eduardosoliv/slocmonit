@@ -8,46 +8,53 @@
 #include "main.h"
 
 /**
+ * Create child
+ */
+void createChildExitOnFailure(void)
+{
+    if (createChild() < 0) {
+        syslog(LOG_ERR, "Cannot fork.\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+/**
+ * Fork to create child and exit parent
+ *
+ * @return PID
+ */
+pid_t createChild(void)
+{
+    pid_t pid = fork();
+
+    if (pid > 0) {
+        // If comes here we got a good PID, so we can exit the parent process
+        exit(EXIT_SUCCESS);
+    }
+
+    return pid;
+}
+
+/**
  * Close standard file descriptors
  */
-void closeStdFileDescriptors(void)
+int closeStdFileDescriptors(void)
 {
-    if (close(STDIN_FILENO) == -1 || close(STDOUT_FILENO) == -1 || close(STDERR_FILENO) == -1) {
-        die("Cannot close standard file descriptors.\n");
-    }
-    #if defined(DEBUG)
-    debugmsg("Standard file descriptors closed successfully.\n");
-    #endif
+    return (close(STDIN_FILENO) == -1 || close(STDOUT_FILENO) == -1 || close(STDERR_FILENO) == -1);
 }
 
 /**
  * Create new SID (Session ID)
  */
-void createSID(void)
+pid_t createSID(void)
 {
-    pid_t sid = setsid();
-    if (sid < 0) {
-        die("Cannot create new sid for the child process.\n");
-    }
-    #if defined(DEBUG)
-    debugmsg("SID set successfully.\n");
-    #endif
+    return setsid();
 }
 
 /**
- * Change directory
- * @param dir
+ * Change to root directory.
  */
-void changeDir(const char *dir)
+int changeRootDir(void)
 {
-    // @todo refactor this function move to util part
-    char ddate[64];
-    utilGetDate(ddate);
-    if (chdir(HOMEDIR) < 0) {
-        fprintf(fpl, "%s - Cannot change to dir %s.\n", ddate, dir);
-        exit(EXIT_FAILURE);
-    }
-    #if defined(DEBUG)
-    fprintf(fpl, "%s - Changed to %s successfully.\n", ddate, dir);
-    #endif
+    return chdir(ROOTDIR);
 }

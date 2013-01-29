@@ -18,16 +18,7 @@ int main(int argc, char** argv)
     lgOpenSyslog();
 
     // Fork
-    pid_t pid = fork();
-    if (pid < 0) {
-        syslog(LOG_ERR, "Cannot fork.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // If comes here we got a good PID, so we can exit the parent process
-    if (pid > 0) {
-        exit(EXIT_SUCCESS);
-    }
+    createChildExitOnFailure();
 
     // Install signal handlers and setup exit function
     setupSignalsExit();
@@ -44,17 +35,23 @@ int main(int argc, char** argv)
     // open log
     lgOpenLog();
 
-    // Syslog not needed anymore, just write to log file
+    // Syslog not needed anymore, from now on write to log file
     lgCloseSyslog();
 
     // Close out the standard file descriptors
-    closeStdFileDescriptors();
+    if (closeStdFileDescriptors()) {
+        die("Cannot close standard file descriptors.\n");
+    }
 
     // Create a new SID for the child process
-    createSID();
+    if (createSID() < 0) {
+        die("Cannot create new sid for the child process.\n");
+    }
 
     // Change the current dir (prevent unmount)
-    changeDir(HOMEDIR);
+    if (changeRootDir() < 0) {
+        die("Cannot change to root dir.\n");
+    }
 
     // Read old PID check if is still running
     FILE *fopid = fopen(pidFile, "r");

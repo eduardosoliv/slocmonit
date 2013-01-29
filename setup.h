@@ -13,9 +13,11 @@ extern "C" {
 #endif
 
 // Prototypes
-void closeStdFileDescriptors(void);
-void createSID(void);
-void changeDir(const char *dir);
+void createChildExitOnFailure(void);
+pid_t createChild(void);
+int closeStdFileDescriptors(void);
+pid_t createSID(void);
+int changeRootDir(void);
 
 #ifdef	__cplusplus
 }

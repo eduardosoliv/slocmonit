@@ -36,7 +36,7 @@ extern "C" {
 
 #define APP_NAME "slocmonit"
 #define DEBUG
-#define HOMEDIR "/"
+#define ROOTDIR "/"
 
 /*-----------------------------------------------------------------------------
  * External declarations
