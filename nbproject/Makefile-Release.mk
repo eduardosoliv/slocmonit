@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/logging.o \
 	${OBJECTDIR}/util.o \
 	${OBJECTDIR}/hsignal.o \
+	${OBJECTDIR}/setup.o \
 	${OBJECTDIR}/config.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/hexit.o
@@ -66,6 +68,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/slocmonit: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/slocmonit ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/logging.o: logging.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/logging.o logging.c
+
 ${OBJECTDIR}/util.o: util.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -75,6 +82,11 @@ ${OBJECTDIR}/hsignal.o: hsignal.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/hsignal.o hsignal.c
+
+${OBJECTDIR}/setup.o: setup.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/setup.o setup.c
 
 ${OBJECTDIR}/config.o: config.c 
 	${MKDIR} -p ${OBJECTDIR}

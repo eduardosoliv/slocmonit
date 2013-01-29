@@ -7,7 +7,9 @@
       <itemPath>config.h</itemPath>
       <itemPath>hexit.h</itemPath>
       <itemPath>hsignal.h</itemPath>
+      <itemPath>logging.h</itemPath>
       <itemPath>main.h</itemPath>
+      <itemPath>setup.h</itemPath>
       <itemPath>util.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -20,7 +22,9 @@
       <itemPath>config.c</itemPath>
       <itemPath>hexit.c</itemPath>
       <itemPath>hsignal.c</itemPath>
+      <itemPath>logging.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>setup.c</itemPath>
       <itemPath>util.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

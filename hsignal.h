@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 // Prototypes
+void setupSignalsExit(void);
 void hsignalInstall(void);
 void hsignalHandler(int sig);
 

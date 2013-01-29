@@ -8,6 +8,21 @@
 #include "main.h"
 
 /**
+ * Setup signal handlers and exit function
+ */
+void setupSignalsExit(void)
+{
+    // Install signal handlers
+    hsignalInstall();
+
+    // Setup exit function
+    if (atexit(bye) != 0) {
+        syslog(LOG_ERR, "Cannot set exit function.\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+/**
  * Install signal handlers
  */
 void hsignalInstall(void)

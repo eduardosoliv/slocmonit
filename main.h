@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.h
  * Author: Eduardo Oliveira <entering@gmail.com>
  *
@@ -11,10 +11,10 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-    
+
 /*-----------------------------------------------------------------------------
  * Includes
- *----------------------------------------------------------------------------*/    
+ *----------------------------------------------------------------------------*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,32 +27,30 @@ extern "C" {
 #include "hsignal.h"
 #include "hexit.h"
 #include "config.h"
+#include "logging.h"
+#include "setup.h"
 
 /*-----------------------------------------------------------------------------
  * Static configuration
  *----------------------------------------------------------------------------*/
-    
+
 #define APP_NAME "slocmonit"
 #define DEBUG
-#define HOMEDIR "/"    
-    
+#define HOMEDIR "/"
+
 /*-----------------------------------------------------------------------------
  * External declarations
  *----------------------------------------------------------------------------*/
 
 extern FILE *fpl;
 extern char *logPath;
+extern char *pidFile;
 
 /*-----------------------------------------------------------------------------
  * Functions prototypes
  *----------------------------------------------------------------------------*/
 
-void setupSignalsExit(void); 
 inline void debugmsg(const char *msg);
-void openLog(void);
-void closeStdFileDescriptors(void);
-void createSID(void);
-void changeDir(const char *dir);
 
 #ifdef	__cplusplus
 }
