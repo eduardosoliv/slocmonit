@@ -23,6 +23,7 @@ extern "C" {
 #include <signal.h>
 #include <string.h>
 #include <unistd.h>
+#include <check.h>
 
 #include "hsignal.h"
 #include "hexit.h"
